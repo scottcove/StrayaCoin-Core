@@ -1,7 +1,7 @@
 #!/bin/bash
 pid=$$
 logfile=/var/log/strayacoin-mining.log
-version_number="1.0.0"
+version_number="1.0.1"
 
 print-help(){
   echo
