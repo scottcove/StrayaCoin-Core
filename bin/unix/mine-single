@@ -1,13 +1,13 @@
 #!/bin/bash
 pid=$$
 logfile=/var/log/strayacoin-mining.log
-version_number="1.0.0"
+version_number="1.0.1"
 
 print-help(){
   echo
   echo "Strayacoin Single-Thread Miner Script Version $version_number"
   echo
-  echo "Usage: mine-single [-q -n]"
+  echo "Usage: mine-single [-qn]"
   echo
   echo "Flags Available:"
   echo "  -q (--quiet)       : Do not output anything to the terminal, not even a PID."
@@ -52,13 +52,8 @@ for i in "$@"; do
 done
 
 if [[ "$no_logging" != "y" ]]; then
-  echo "Mining Started at $(date) - PID: $pid" >> $logfile
-  # If the logfile does not exist, create it.
-  if [[ ! -f $logfile ]]; then
-    echo "Logfile does not exist.  Need to create one.  This will ask for your password."
-    sudo touch $logfile
-    sudo chmod 666 $logfile
-  fi
+  echo >> $logfile
+  echo "Mining Started at $(date)" >> $logfile
 fi
 
 if [[ "$quiet_mode" != "y" ]]; then
